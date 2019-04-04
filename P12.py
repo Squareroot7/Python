@@ -2,7 +2,7 @@
 number=1
 result=0
 
-while number!=11:
+while number!=21:
 	result= result + number
 	number=number+1
 print("La somma dei primi 10 numeri è", result)
