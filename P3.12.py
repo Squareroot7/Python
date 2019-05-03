@@ -15,17 +15,6 @@ if Scelta== 'N':
     if votoNumerico[2] == "3" and votoNumerico[0]!="0":
         print(chr(str3), "+")
 
-   #if abs(votoNumerico-(float(round(votoNumerico+1))-0.3))<0.00000001
-   #     flag=1
-   # if abs(votoNumerico-(float(round(votoNumerico))+0.3))<0.00000001
-   #     flag=2    
-   # if flag==1:
-   #     print(chr(69-round(votoNumerico)))+print('-')
-   #     flag=0 
-   # if flag==2:
-   #     print(chr(69-round(votoNumerico)))+print('+')
-   #     flag=0
-
 if Scelta== 'L':
     votoLetterale=(input('Inserisci il voto letterale da convertire '))
     if votoLetterale!="A" and votoLetterale!="F":
