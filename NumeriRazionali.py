@@ -61,8 +61,13 @@ den=0
 menu=input("Inserisci A per somma, S per sottrazione, M per moltiplicazione, D per divisione")
 while(menu !="E" and menu !="e"):
     if(menu=="A" or menu=="a"): 
-        n1=int(input("Inserisci numeratore del primo numero "))
-        d1=int(input("Inserisci il denominatore del primo numero"))
+        
+        n1 , d1 =(input("Inserisci la frazione: ").split('/'))
+        int(n1)
+        int(d1)
+        #n1=int(input("Inserisci numeratore del primo numero "))
+        #d1=int(input("Inserisci il denominatore del primo numero"))
+        
         frac1=Fraction(n1,d1)
         n2=int(input("Inserisci numeratore del secondo numero "))
         d2=int(input("Inserisci il denominatore del secondo numero"))
