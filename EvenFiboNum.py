@@ -31,22 +31,38 @@ main()
 #FIBONACCI VERSIONE 2
 
 def main():
+    #Greetings
+
     print("Welcome to Fibonacci's numbers analyzer")
     print("Let's find even Fibonacci's numbers")
     maxnum=int(input("Insert how many Fibonacci's numbers you desidere to analize "))
+    
+    #Memoized version - Terza soluzione
+    dim=maxnum+1
+    memo=[]
+    {memo.append(0) for i in range(dim)}
+    #End of configuration for memoized version
+    
+    #Main loop that prints the values
     for i in range(maxnum+1):
         if i!=0:    
-            value=fib(i)
+            #value=fib(i) Seconda soluzione
+            value=MemoFib(i,memo) #Terza soluzione
             if even(value)!=None:
                 print(even(value))
+
+#End final comment
     print("This is your list of even Fibonacci's numbers analyzing %d Fibonacci's numbers" % maxnum)
 
+#Funzione che stabilisce se un numero è pari o dispari
 def even(value):
     if value%2 == 0:
         return value
+    #Else skip (is not necessary to print the numbers that are not odd
     else:
         return print("This is not an odd number %d" %value)
 
+#Seconda soluzione
 def fib(num):
     if num==1:
         return 1
@@ -55,4 +71,17 @@ def fib(num):
         a,b = b, a+b 
     return a
 
+#Memoized version - Terza soluzione
+def MemoFib(n,memo):
+    if memo[n]!=0:
+        return memo[n]
+    if n==1 or n==2:
+        result=1
+    else:
+        result=MemoFib(n-1,memo) + MemoFib(n-2,memo)
+    memo.insert(n,result)
+    return result
+
+#Main seconda e terza versione
 main()
+
