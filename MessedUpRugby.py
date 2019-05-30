@@ -3,31 +3,60 @@
 #tries vale 3
 #kicks vale 2
 
+kicks=0
+tries=0
+conversions=0
+
 CONVERSIONS=7
 TRIES=3
 KICKS=2
-
 def main():
-    numero=input('Qual è stato il punteggio della squadra? ')
-    for permutation in Rugby(numero)
-        print(permutation)
-
-def Rugby(numero):
-    result= []
     
-    while(numero>=0):
-        if numero%2==0 and numero!=0:
-            #Il numero è pari
-            #ergo si può sottrarre o tries*2 o conversions*2 o kicks in numero/2*kicks
-            #salvo il fatto che ho fatto una di queste operazioni
-            
-            #si può fare rugby di nuovo numero
-        elif numero%2!=0 and numero!=0:
-            #Il numero è dispari
-            #o gli sottraggo tries o kicks
-            
-            #rugby di nuovo numero
-        #caso base
-        elif numero==0:
-            return result
+    numero=int(input('Qual è stato il punteggio della squadra? '))
+    print(Rugby(numero,kicks, tries, conversions))
 
+    for result in Rugby(numero,kicks, tries, conversions):
+        print(result)
+
+
+def Rugby(numero,kicks,tries,conversions):
+    result=[]
+    if numero == 2:
+        numero=0
+        kicks=kicks+1
+        result.append(kicks)
+        result.append(tries)
+        result.append(conversions)
+        return result
+    if numero == 3:
+        numero=0
+        tries=tries+1
+        result.append(kicks)
+        result.append(tries)
+        result.append(conversions)
+        return result
+    if numero == 7:
+        numero=0
+        conversions=conversions+1
+        result.append(kicks)
+        result.append(tries)
+        result.append(conversions)
+        return result
+    else:
+        if (numero-KICKS) > 0 or (numero-TRIES)>0 or (numero-CONVERSIONS)>0:
+            
+            num=numero
+            short=numero-KICKS
+            kicks=kicks+1
+            return Rugby(short,kicks,tries,conversions)
+
+            num=num
+            short=num-TRIES
+            tries=tries+1
+            return Rugby(short,kicks, tries, conversions)
+            
+            short=nom-CONVERSIONS
+            conversions=conversions+1
+            return Rugby(short,kicks, tries, conversions)
+            
+main()
