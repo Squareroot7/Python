@@ -15,15 +15,17 @@ def main():
     numero=int(input('Qual è stato il punteggio della squadra? '))
     print(Rugby(numero,kicks, tries, conversions))
 
-    for result in Rugby(numero,kicks, tries, conversions):
-        print(result)
+ #   for result in Rugby(numero,kicks, tries, conversions):
+  #      print(result)
 
 
 def Rugby(numero,kicks,tries,conversions):
-    result=[]
+    resulti=[]
+    result=[resulti]
     if numero == 2:
         numero=0
         kicks=kicks+1
+
         result.append(kicks)
         result.append(tries)
         result.append(conversions)
@@ -42,21 +44,18 @@ def Rugby(numero,kicks,tries,conversions):
         result.append(tries)
         result.append(conversions)
         return result
-    else:
+    elif numero!=0:
         if (numero-KICKS) > 0 or (numero-TRIES)>0 or (numero-CONVERSIONS)>0:
-            
-            num=numero
-            short=numero-KICKS
-            kicks=kicks+1
-            return Rugby(short,kicks,tries,conversions)
-
-            num=num
-            short=num-TRIES
-            tries=tries+1
-            return Rugby(short,kicks, tries, conversions)
-            
-            short=nom-CONVERSIONS
-            conversions=conversions+1
-            return Rugby(short,kicks, tries, conversions)
-            
+                short=numero-KICKS
+                kicks=kicks+1
+                shorter=(Rugby(short,kicks,tries,conversions))
+                resulti.append(shorter)
+                short=numero-TRIES
+                tries=tries+1
+                shorter=(Rugby(short,kicks, tries, conversions))
+                resulti.append(shorter)
+                short=numero-CONVERSIONS
+                conversions=conversions+1
+                shorter=(Rugby(short,kicks, tries, conversions))
+                resulti.append(shorter)
 main()
