@@ -10,22 +10,23 @@ conversions=0
 CONVERSIONS=7
 TRIES=3
 KICKS=2
+case=[]
+case.append(KICKS)
+case.append(TRIES)
+case.append(CONVERSIONS)
+
+
 def main():
     
     numero=int(input('Qual è stato il punteggio della squadra? '))
     print(Rugby(numero,kicks, tries, conversions))
 
- #   for result in Rugby(numero,kicks, tries, conversions):
-  #      print(result)
 
-
-def Rugby(numero,kicks,tries,conversions):
-    resulti=[]
-    result=[resulti]
+def Rugby(numero,kicks,tries,conversions,case):
+    result=[]
     if numero == 2:
         numero=0
         kicks=kicks+1
-
         result.append(kicks)
         result.append(tries)
         result.append(conversions)
@@ -44,18 +45,23 @@ def Rugby(numero,kicks,tries,conversions):
         result.append(tries)
         result.append(conversions)
         return result
-    elif numero!=0:
+    else:
         if (numero-KICKS) > 0 or (numero-TRIES)>0 or (numero-CONVERSIONS)>0:
-                short=numero-KICKS
-                kicks=kicks+1
-                shorter=(Rugby(short,kicks,tries,conversions))
-                resulti.append(shorter)
-                short=numero-TRIES
-                tries=tries+1
-                shorter=(Rugby(short,kicks, tries, conversions))
-                resulti.append(shorter)
-                short=numero-CONVERSIONS
-                conversions=conversions+1
-                shorter=(Rugby(short,kicks, tries, conversions))
-                resulti.append(shorter)
+            for i in case[i]
+                short=numero-case[i]
+                if case[i]==KICKS:
+                    kicks=kicks+1
+                    short=numero-case[i]
+                    Rugby(short,kicks,tries,conversions,case)
+
+                if case[i]==TRIES:
+                    tries=tries+1
+                    short=numero-case[i]
+                    Rugby(short,kicks,tries,conversions,case)
+
+                if case[i]==CONVERSIONS:
+                    conversions=conversions+1
+                    short=numero-case[i]
+                    Rugby(short,kicks,tries,conversions,case)
+               
 main()
