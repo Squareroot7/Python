@@ -19,49 +19,50 @@ case.append(CONVERSIONS)
 def main():
     
     numero=int(input('Qual è stato il punteggio della squadra? '))
-    print(Rugby(numero,kicks, tries, conversions))
+    print(Rugby(numero,case,kicks, tries, conversions))
 
 
-def Rugby(numero,kicks,tries,conversions,case):
+def Rugby(numero,case,kicks,tries, conversions):
+    num=numero
     result=[]
-    if numero == 2:
-        numero=0
-        kicks=kicks+1
-        result.append(kicks)
-        result.append(tries)
-        result.append(conversions)
+    if num>=KICKS:
+        if num == KICKS:
+            num=0
+            kicks=kicks+1
+            result.append(kicks)
+            result.append(tries)
+            result.append(conversions)
+        if num == TRIES:
+            num=0
+            tries=tries+1
+            result.append(kicks)
+            result.append(tries)
+            result.append(conversions)
+        if num == CONVERSIONS:
+            num=0
+            conversions=conversions+1
+            result.append(kicks)
+            result.append(tries)
+            result.append(conversions)
+        else:
+            if num-CONVERSIONS>0 or num-KICKS>0 or num-TRIES>0:
+                for i in range(3):
+                    short=num-case[i]
+                    if case[i]==KICKS:
+                        kicks=kicks+1
+                        short=numero-case[i]
+                        Rugby(short,case,kicks, tries, conversions)
+                        print(kicks,tries, conversions)
+                    if case[i]==TRIES:
+                        tries=tries+1
+                        short=numero-case[i]
+                        Rugby(short,case,kicks, tries, conversions)
+                        print(kicks, tries, conversions)
+                    if case[i]==CONVERSIONS:
+                        conversions=conversions+1
+                        short=numero-case[i]
+                        Rugby(short,case,kicks,tries,conversions)
+                        print(kicks,tries,conversions)
+    elif num==0:
         return result
-    if numero == 3:
-        numero=0
-        tries=tries+1
-        result.append(kicks)
-        result.append(tries)
-        result.append(conversions)
-        return result
-    if numero == 7:
-        numero=0
-        conversions=conversions+1
-        result.append(kicks)
-        result.append(tries)
-        result.append(conversions)
-        return result
-    else:
-        if (numero-KICKS) > 0 or (numero-TRIES)>0 or (numero-CONVERSIONS)>0:
-            for i in case[i]
-                short=numero-case[i]
-                if case[i]==KICKS:
-                    kicks=kicks+1
-                    short=numero-case[i]
-                    Rugby(short,kicks,tries,conversions,case)
-
-                if case[i]==TRIES:
-                    tries=tries+1
-                    short=numero-case[i]
-                    Rugby(short,kicks,tries,conversions,case)
-
-                if case[i]==CONVERSIONS:
-                    conversions=conversions+1
-                    short=numero-case[i]
-                    Rugby(short,kicks,tries,conversions,case)
-               
 main()
